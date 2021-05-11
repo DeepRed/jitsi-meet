@@ -2,6 +2,7 @@
 
 import _ from 'lodash';
 
+import { Alert } from 'react-native';
 import { createToolbarEvent, sendAnalytics } from '../../analytics';
 import { appNavigate } from '../../app/actions';
 import { disconnect } from '../../base/connection';
@@ -62,6 +63,13 @@ class HangupButton extends AbstractHangupButton<Props, *> {
      * @returns {void}
      */
     _doHangup() {
+        if (window.recording_local_stream != undefined)
+        {
+            Alert.alert('Inspelning pågår', 'Avsluta inspelningen innan du kan lämna mötet.', [
+                { text: 'OK' }
+              ]);
+            return false;
+        }
         this._hangup();
     }
 }

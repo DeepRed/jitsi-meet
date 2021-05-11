@@ -12,7 +12,8 @@ import {
     SET_VIDEO_MUTED,
     VIDEO_MUTISM_AUTHORITY,
     TOGGLE_CAMERA_FACING_MODE,
-    toggleCameraFacingMode
+    toggleCameraFacingMode,
+    TOGGLE_LOCAL_RECORDING
 } from '../media';
 import { MiddlewareRegistry } from '../redux';
 
@@ -116,6 +117,7 @@ MiddlewareRegistry.register(store => next => action => {
             // implemented in react-native-webrtc for video which switches
             // between the cameras via a native WebRTC library implementation
             // without making any changes to the track.
+            window.toggle_local_recording = false;
             jitsiTrack._switchCamera();
 
             // Don't mirror the video of the back/environment-facing camera.
@@ -129,6 +131,22 @@ MiddlewareRegistry.register(store => next => action => {
                     mirror
                 }
             });
+        }
+        break;
+    }
+
+    case TOGGLE_LOCAL_RECORDING: {
+        console.log('middleware.js', 'TOGGLE_LOCAL_RECORDING');
+        const localTrack = _getLocalTrack(store, MEDIA_TYPE.VIDEO);
+        let jitsiTrack;
+
+        if (localTrack && (jitsiTrack = localTrack.jitsiTrack)) {
+           
+            // XXX MediaStreamTrack._record is a custom function
+            // implemented in react-native-webrtc for video which starts
+            // a local recording of outgoing camera feed
+            window.toggle_local_recording = true;
+            jitsiTrack._record();
         }
         break;
     }

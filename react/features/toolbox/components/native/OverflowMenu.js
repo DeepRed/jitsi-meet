@@ -27,6 +27,7 @@ import MoreOptionsButton from './MoreOptionsButton';
 import RaiseHandButton from './RaiseHandButton';
 import ScreenSharingButton from './ScreenSharingButton.js';
 import ToggleCameraButton from './ToggleCameraButton';
+import ToggleLocalRecordingButton from './ToggleLocalRecordingButton';
 import styles from './styles';
 
 /**
@@ -135,6 +136,7 @@ class OverflowMenu extends PureComponent<Props, State> {
                 onCancel = { this._onCancel }
                 onSwipe = { this._onSwipe }
                 renderHeader = { this._renderMenuExpandToggle }>
+                <ToggleLocalRecordingButton { ...buttonProps } />
                 <AudioRouteButton { ...buttonProps } />
                 {!toolbarButtons.has('invite') && <InviteButton { ...buttonProps } />}
                 <AudioOnlyButton { ...buttonProps } />

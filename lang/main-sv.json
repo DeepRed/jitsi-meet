@@ -606,6 +606,7 @@
             "speakerStats": "Stäng eller öppna talarstatistik",
             "tileView": "Öppna eller stäng panelvyn",
             "toggleCamera": "Växla kamera",
+            "toggleLocalRecording": "Starta/avsluta inspelning",
             "videomute": "Sätt på eller stäng av mikrofonen",
             "videoblur": "",
             "muteEveryone": "Tysta alla",

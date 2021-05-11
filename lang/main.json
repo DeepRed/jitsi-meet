@@ -841,6 +841,7 @@
         "talkWhileMutedPopup": "Trying to speak? You are muted.",
         "tileViewToggle": "Toggle tile view",
         "toggleCamera": "Toggle camera",
+        "toggleLocalRecording": "Toggle local recording",
         "videomute": "Start / Stop camera",
         "videoSettings": "Video settings",
         "selectBackground": "Select background"
