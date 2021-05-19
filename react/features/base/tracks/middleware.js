@@ -136,7 +136,6 @@ MiddlewareRegistry.register(store => next => action => {
     }
 
     case TOGGLE_LOCAL_RECORDING: {
-        console.log('middleware.js', 'TOGGLE_LOCAL_RECORDING');
         const localTrack = _getLocalTrack(store, MEDIA_TYPE.VIDEO);
         let jitsiTrack;
 
@@ -146,6 +145,7 @@ MiddlewareRegistry.register(store => next => action => {
             // implemented in react-native-webrtc for video which starts
             // a local recording of outgoing camera feed
             window.toggle_local_recording = true;
+
             jitsiTrack._record();
         }
         break;
